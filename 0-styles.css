@@ -340,14 +340,7 @@ ul.row {
   list-style: none;
 }
 
-.row::after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
 [class*='col-'] {
-  float: left;
   padding: 0.5rem;
 }
 
@@ -407,6 +400,10 @@ ul.row {
 .nav .nav-item:hover .nav-link::before {
   background-color: var(--color-primary);
   width: 100%;
+}
+
+.row {
+  display: flex;
 }
 
 /* Header
