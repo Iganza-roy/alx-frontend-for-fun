@@ -8,7 +8,7 @@
 /*** 1. GLOBAL ***/
 
 /* Reset / Normalize
-   ============================ */
+   ============================= */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -155,7 +155,7 @@ template {
 }
 
 /* Variables
-                             ============================= */
+   ============================= */
 
 :root {
   --color-primary: #d73953;
@@ -234,7 +234,7 @@ template {
 }
 
 /* Base
-                                ============================= */
+      ============================= */
 
 *,
 *:before,
@@ -300,7 +300,7 @@ a:active {
 }
 
 /* Helpers
-                                ============================= */
+      ============================= */
 
 .visually-hidden:not(:focus):not(:active) {
   position: absolute !important;
@@ -314,7 +314,7 @@ a:active {
 /*** 2. LAYOUT ***/
 
 /* Layout
-                                ============================= */
+      ============================= */
 
 .container {
   width: 960px;
@@ -323,7 +323,11 @@ a:active {
 }
 
 /* Grid
-                                ============================= */
+      ============================= */
+
+.row {
+  display: flex;
+}
 
 ul.row {
   margin: -1rem;
@@ -344,7 +348,7 @@ ul.row {
 }
 
 /* Navbar
-                                ============================= */
+      ============================= */
 
 .nav {
   display: flex;
@@ -359,6 +363,10 @@ ul.row {
   font-weight: var(--nav-item-font-weight);
   font-size: var(--nav-item-font-size);
   letter-spacing: var(--nav-item-letter-spacing);
+}
+
+.nav .nav-item + .nav-item {
+  margin: var(--nav-item-margin);
 }
 
 .nav .nav-link {
@@ -388,22 +396,14 @@ ul.row {
   width: 100%;
 }
 
-.row {
-  display: flex;
-}
-
-.nav .nav-item + .nav-item {
-  margin: var(--nav-item-margin);
-}
-
 /* Header
-                                ============================= */
+      ============================= */
 
 .header {
   padding: var(--header-padding);
   position: relative;
   z-index: 3;
-  background: transparent;
+  background: transparent !important;
 }
 
 .header-container {
@@ -413,7 +413,7 @@ ul.row {
 }
 
 /* Footer
-                                ============================= */
+      ============================= */
 
 .footer {
   --nav-item-font-weight: normal;
@@ -446,7 +446,7 @@ ul.row {
 /*** 3. SECTION ***/
 
 /* Section (all styles)
-                                ============================= */
+      ============================= */
 
 .section {
   padding: var(--section-padding);
@@ -483,7 +483,7 @@ ul.row {
 }
 
 /* Section theming
-                                ============================= */
+      ============================= */
 
 [data-section-theme='dark'] {
   --button-color: var(--color-white);
@@ -493,22 +493,18 @@ ul.row {
 }
 
 /* Section HERO
-                                ============================= */
+      ============================= */
 
 .section-hero {
   position: relative;
   margin-top: -8.5rem;
-  background-position: 75% 0;
-  background-repeat: no-repeat;
-  background-size: 90rem auto;
-  background-color: #010101;
 }
 
 .section-hero .section-body {
   padding: 10rem 4rem;
 }
 
-.section-category .section-hero {
+.section-hero .section-category {
   color: var(--color-white);
   text-transform: uppercase;
 }
@@ -532,17 +528,23 @@ ul.row {
   min-height: 50vh;
 }
 
-/* Section Latest news ============================= */
+/* Section Latest news
+    ============================= */
+
 .section-latest-news .row {
   flex-direction: row-reverse;
 }
 
-/* Section SERVICES ============================= */
+/* Section SERVICES
+    ============================= */
+
 .section-services .row {
   flex-wrap: wrap;
 }
 
-/* Section ABOUT US */
+/* Section ABOUT US
+    ============================= */
+
 .section-about-us [class*='col-'] {
   align-self: center;
 }
@@ -550,14 +552,14 @@ ul.row {
 /*** 4. CARD ***/
 
 /* Card (all styles)
-                                ============================= */
+      ============================= */
 
 .card-category {
   color: var(--color-primary);
 }
 
 /* Card WORK
-                                ============================= */
+      ============================= */
 
 .card-work .card-outer {
   position: relative;
@@ -622,7 +624,7 @@ ul.row {
 }
 
 /* Card SERVICES
-                                ============================= */
+      ============================= */
 
 .card-services .card-title {
   margin: 0;
@@ -643,7 +645,7 @@ ul.row {
 }
 
 /* Card TESTIMONIAL
-                                ============================= */
+      ============================= */
 
 .card-testimonial {
   text-align: center;
@@ -677,7 +679,7 @@ ul.row {
 
 /*** ARTICLE PAGE ***/
 /* Section HERO (article)
-        ============================= */
+    ============================= */
 
 .hero-article {
   background-size: 150rem 100rem;
@@ -701,7 +703,7 @@ ul.row {
   min-height: 40vh;
 }
 
-.section-body .hero-article {
+.hero-article .section-body {
   position: relative;
   padding: 7rem 0 0;
   z-index: 2;
@@ -712,7 +714,7 @@ ul.row {
 }
 
 /* Post
-      ============================= */
+    ============================= */
 
 .post {
   display: flex;
@@ -723,7 +725,7 @@ ul.row {
 }
 
 .post-aside {
-  order: 1;
+  order: -1;
   min-width: 20%;
 }
 
@@ -734,16 +736,22 @@ ul.row {
   flex-direction: column;
 }
 
-.post-meta-list .strong {
+.post-meta-list strong {
   color: var(--color-primary);
   font-size: var(--font-size-small);
   text-transform: uppercase;
   display: block;
 }
 
-.post-meta-list [class*='post-meta'] {
+.post-meta-list [class*='post-meta-'] {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.2rem solid var(--color-light-grey);
+}
+
+.post-meta-list [class*='post-meta']:last-child {
   border: none;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 /* Tag list
