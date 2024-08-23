@@ -701,7 +701,7 @@ ul.row {
   min-height: 40vh;
 }
 
-.section-body .hero-article {
+.hero-article .section-body {
   position: relative;
   padding: 7rem 0 0;
   z-index: 2;
